@@ -23,6 +23,7 @@
 
     .work .work__title {
         font-size: 2.0rem;
+        font-weight: 500;
         margin-bottom: 5px;
     }
 </style>

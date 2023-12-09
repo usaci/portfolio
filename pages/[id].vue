@@ -1,5 +1,6 @@
 <template>
     <template v-if="data">
+        <main class="mainContents">
         <header class="article__header">
             <p class="article__cat">{{ data.category?.name }}</p>
             <h1 class="article__title">{{ data.title }}</h1>
@@ -18,6 +19,7 @@
         <!-- <footer class="article__footer">
 
         </footer> -->
+    </main>
     </template>
 </template>
 <script setup lang="ts">

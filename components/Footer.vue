@@ -10,8 +10,8 @@
 .siteFooter {
     width: 100%;
     font-size: 1.4rem;
-    backdrop-filter: blur(10px);
-       -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
 }
 
 .siteFooter .siteFooter__logo img {

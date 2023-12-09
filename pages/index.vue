@@ -1,63 +1,78 @@
 <template>
-    <section class="mainVisual">
-        <div class="inner">
-            <div class="titles">
-                <p class="subTitle">Designer / Front-end-engineer</p>
-                <h2 class="mainTitle">TAKUYA<br>FUJIKAWA<br>PORTFOLIO</h2>
+    <main class="mainContents" ref="mainContents">
+        <section class="mainVisual" ref="mainVisual">
+            <div class="inner">
+                <div class="titles">
+                    <p class="subTitle">Designer / Front-end-engineer</p>
+                    <h2 class="mainTitle">TAKUYA<br>FUJIKAWA<br>PORTFOLIO</h2>
+                </div>
             </div>
-        </div>
-    </section>
-    <section class="works">
-        <div class="inner">
-            <p class="subTitle">制作実績</p>
-            <h2 class="mainTitle">WORKS</h2>
-            <ul class="works__list">
-                <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
+        </section>
+        <section class="works" ref="works">
+            <div class="inner">
+                <p class="subTitle">制作実績</p>
+                <h2 class="mainTitle">WORKS</h2>
+                <ul class="works__list">
+                    <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
+                </ul>
+            </div>
+        </section>
+        <section class="about about--firstBlock">
+            <div class="inner">
+                <div class="titles">
+                    <p class="subTitle">Hello, World!</p>
+                    <h2 class="mainTitle">はじめまして、<br>藤川拓也です。</h2>
+                </div>
+                <div class="texts">
+                    <p>2000年12月9日生まれ。神奈川県秦野市在住。<br>
+                    不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
+                    Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
+                    <Button></Button>
+                </div>
+            </div>
+        </section>
+        <section class="about about--secondBlock">
+            <div class="inner">
+                <div class="titles">
+                    <p class="subTitle">Vision</p>
+                    <h2 class="mainTitle">デザインと実装<br>どちらも一流で<br>こなしたい</h2>
+                </div>
+                <div class="texts">
+                    <p>2000年12月9日生まれ。神奈川県秦野市在住。<br>
+                    不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
+                    Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
+                </div>
+            </div>
+        </section>
+        <section class="link">
+            <ul class="link__list">
+                <li><a href="" target="_blank"></a></li>
+                <li><a href="" target="_blank"></a></li>
+                <li><a href="" target="_blank"></a></li>
             </ul>
-        </div>
-    </section>
-    <section class="about about--firstBlock">
-        <div class="inner">
-            <div class="titles">
-                <p class="subTitle">Hello, World!</p>
-                <h2 class="mainTitle">はじめまして、<br>藤川拓也です。</h2>
-            </div>
-            <div class="texts">
-                <p>2000年12月9日生まれ。神奈川県秦野市在住。<br>
-                不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
-                Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
-            </div>
-        </div>
-    </section>
-    <section class="about about--secondBlock">
-        <div class="inner">
-            <div class="titles">
-                <p class="subTitle">Vision</p>
-                <h2 class="mainTitle">デザインと実装<br>どちらも一流で<br>こなしたい</h2>
-            </div>
-            <div class="texts">
-                <p>2000年12月9日生まれ。神奈川県秦野市在住。<br>
-                不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
-                Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
-            </div>
-        </div>
-    </section>
-    <section class="link">
-        <ul class="link__list">
-            <li><a href="" target="_blank"></a></li>
-            <li><a href="" target="_blank"></a></li>
-            <li><a href="" target="_blank"></a></li>
-        </ul>
-    </section>
+        </section>
+    </main>
 </template>
+
+<script setup lang="ts">
+import { type Blog } from "~~/types/blog";
+const { data, error } = await useMicroCMSGetList<Blog>({
+  endpoint: "blogs",
+});
+
+console.log(error);
+console.log(data);
+
+</script>
 
 <style>
     /* mainTitle */
 
     .mainTitle {
-        font-size: max(calc(100vw * 30 / 768), 5.6rem);
+        font-size: max(calc(100vw * 60 / 768), 7.0rem);
         margin-bottom: 7.0rem;
         line-height: 1.2;
+        font-weight: 500;
     }
     .subTitle {
         font-size: 2.4rem;
@@ -88,11 +103,19 @@
 
     }
 
+    .mainContents {
+        transition: all .5s;
+    }
+
+    .mainContents.focused {
+        backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    background: #F1F0EF60;
+    }
+
     /* WORKS */
     .works {
         padding-bottom: 100px;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
     }
 
     .works .works__list {
@@ -103,7 +126,7 @@
 
     /* works */
     .works .inner {
-        padding: 20px;
+        padding: 40px;
         max-width: 1024px;
         margin: 0 auto;
     }
@@ -113,20 +136,22 @@
         height: 100svh;
         display: flex;
         align-items: center;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
     }
     .about .inner {
         display: flex;
         max-width: 1100px;
         margin: 0 auto;
         align-items: center;
-        padding: 20px;
+        padding: 40px;
         gap: 20px;
     }
 
     .about .inner div {
         width: 50%;
+    }
+
+    .about .inner .mainTitle {
+        font-size: max(calc(100vw * 30 / 768), 5.0rem);
     }
 
 
@@ -157,12 +182,3 @@
         }
     }
 </style>
-
-<script setup lang="ts">
-import { type Blog } from "~~/types/blog";
-
-const { data, error } = await useMicroCMSGetList<Blog>({
-  endpoint: "blogs",
-});
-console.log(data);
-</script>
