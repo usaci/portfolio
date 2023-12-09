@@ -1,38 +1,18 @@
 <template>
-    <template v-if="data">
         <main class="mainContents">
         <header class="article__header">
-            <p class="article__cat">{{ data.category?.name }}</p>
-            <h1 class="article__title">{{ data.title }}</h1>
-            <figure>
-                <img
-                :src="data.eyecatch?.url"
-                :width="data.eyecatch?.width"
-                :height="data.eyecatch?.height"
-                alt=""
-                />
-            </figure>
+            <h1 class="article__title">私について</h1>
         </header>
         <section class="article__main">
-            <div v-html="data.content"></div>
+            <div>
+                <h2>私について</h2>
+            </div>
         </section>
         <!-- <footer class="article__footer">
 
         </footer> -->
     </main>
-    </template>
 </template>
-<script setup lang="ts">
-import { type Blog } from "~~/types/blog";
-
-const { params } = useRoute();
-
-const { data } = await useMicroCMSGetListDetail<Blog>({
-  endpoint: "blogs",
-  contentId: Array.isArray(params.id) ? params.id[0] : params.id,
-});
-console.log(data)
-</script>
 
 <style>
     .article__header {

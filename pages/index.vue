@@ -4,15 +4,19 @@
             <div class="inner">
                 <div class="titles">
                     <p class="subTitle">Designer / Front-end-engineer</p>
-                    <h2 class="mainTitle">TAKUYA<br>FUJIKAWA<br>PORTFOLIO</h2>
+                    <h2 class="mainTitle">Takuya Fujikawa<br>Portfolio</h2>
                 </div>
             </div>
         </section>
         <section class="works" ref="works">
             <div class="inner">
-                <p class="subTitle">制作実績</p>
-                <h2 class="mainTitle">WORKS</h2>
+                <div class="titles">
+                    <p class="subTitle">制作実績</p>
+                    <h2 class="mainTitle mainTitle--deco">Works</h2>
+                </div>
                 <ul class="works__list">
+                    <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
+                    <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
                     <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
                 </ul>
             </div>
@@ -20,28 +24,22 @@
         <section class="about about--firstBlock">
             <div class="inner">
                 <div class="titles">
-                    <p class="subTitle">Hello, World!</p>
+                    <p class="subTitle">私について</p>
+                    <h2 class="mainTitle mainTitle--deco">Hello, World!</h2>
+                </div>
+                <div class="about__texts">
                     <h2 class="mainTitle">はじめまして、<br>藤川拓也です。</h2>
-                </div>
-                <div class="texts">
+
                     <p>2000年12月9日生まれ。神奈川県秦野市在住。<br>
-                    不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
-                    Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
-                    <Button></Button>
+                        不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
+                        Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
+    
+                    <h2 class="mainTitle">デザインと実装<br>どちらも興味があります。</h2>
+                        <p>2000年12月9日生まれ。神奈川県秦野市在住。<br>
+                        不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
+                        Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
                 </div>
-            </div>
-        </section>
-        <section class="about about--secondBlock">
-            <div class="inner">
-                <div class="titles">
-                    <p class="subTitle">Vision</p>
-                    <h2 class="mainTitle">デザインと実装<br>どちらも一流で<br>こなしたい</h2>
-                </div>
-                <div class="texts">
-                    <p>2000年12月9日生まれ。神奈川県秦野市在住。<br>
-                    不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
-                    Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
-                </div>
+
             </div>
         </section>
         <section class="link">
@@ -55,28 +53,39 @@
 </template>
 
 <script setup lang="ts">
-import { type Blog } from "~~/types/blog";
-const { data, error } = await useMicroCMSGetList<Blog>({
-  endpoint: "blogs",
-});
-
-console.log(error);
-console.log(data);
-
+    import { type Blog } from "~~/types/blog";
+    const { data, error } = await useMicroCMSGetList<Blog>({
+    endpoint: "blogs",
+    });
 </script>
 
 <style>
     /* mainTitle */
 
     .mainTitle {
+        font-family: 'degular-display', 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'YuGothic', Meiryo UI, sans-serif;
         font-size: max(calc(100vw * 60 / 768), 7.0rem);
         margin-bottom: 7.0rem;
         line-height: 1.2;
         font-weight: 500;
     }
+
+    .mainTitle.mainTitle--deco:before {
+        content: "";
+        display: inline-block;
+        background: url('../assets/deco.svg');
+        height: 0.2em;
+        width: 0.2em;
+        margin-bottom: 0.2em;
+        margin-right: 0.2em;
+        transform: rotate(90deg);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
     .subTitle {
-        font-size: 2.4rem;
-        margin-bottom: 10px;
+        font-family: 'degular-display', sans-serif;
+        font-size: 3.2rem;
+        margin-bottom: 0px;
     }
     /* mainVisual */
     .mainVisual {
@@ -95,11 +104,13 @@ console.log(data);
     .mainVisual .inner .titles {
         position: absolute;
         bottom: 0;
+        left: 30px;
     }
 
     .mainVisual .mainTitle {
-        font-size: 9.0rem;
-        line-height: 1.0;
+        font-size: 14.2vw;
+        line-height: 0.9;
+        font-family: 'degular-display', sans-serif;
 
     }
 
@@ -126,32 +137,71 @@ console.log(data);
 
     /* works */
     .works .inner {
+        display: flex;
+        flex-direction: row-reverse;
         padding: 40px;
-        max-width: 1024px;
         margin: 0 auto;
+        gap: 60px;
+    }
+
+    .works .inner .titles {
+        writing-mode: vertical-rl;
+    }
+
+    .works .inner .titles .mainTitle {
+        font-size: 14rem;
+        line-height: 0.9;
+    }
+
+    .works .inner .titles .subTitle {
+        font-size: 2.0rem;
+        margin-left: -20px;
     }
 
     /* ABOUT */
     .about {
-        height: 100svh;
         display: flex;
         align-items: center;
     }
     .about .inner {
         display: flex;
-        max-width: 1100px;
-        margin: 0 auto;
-        align-items: center;
+        flex-direction: row-reverse;
         padding: 40px;
-        gap: 20px;
+        margin: 0 auto;
+        gap: 60px;
     }
 
-    .about .inner div {
-        width: 50%;
+    .about .inner .titles {
+        writing-mode: vertical-rl;
+    }
+
+    .about .inner .about__texts .titles {
+        writing-mode: initial;
+    }
+
+    .about .inner .about__texts .titles .mainTitle {
+        writing-mode: initial;
+    font-size: 4.8rem;
+    line-height: 1.2;
+    margin-bottom: 4rem;
+    }
+
+    .about .inner .titles .mainTitle {
+        font-size: 14rem;
+        line-height: 0.9;
+    }
+
+    .about .inner .titles .subTitle {
+        font-size: 2.0rem;
+        margin-left: -20px;
     }
 
     .about .inner .mainTitle {
         font-size: max(calc(100vw * 30 / 768), 5.0rem);
+    }
+
+    .about .inner .about__texts p {
+        margin-bottom: 6rem;
     }
 
 
@@ -176,7 +226,6 @@ console.log(data);
         .about .inner {
             flex-direction: column;
         }
-
         .about .inner div {
             width: 100%;
         }

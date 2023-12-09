@@ -7,6 +7,7 @@
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     import { RGBELoader } from "three/addons/loaders/RGBELoader";
     export default {
+
         mounted() {
             const el = this.$el;
             function init() {
@@ -52,17 +53,54 @@
 
                             const aoMap = new THREE.TextureLoader().load('../_nuxt/assets/aoMap.png')
                             aoMap.flipY = false;
-                            object.material.roughness = 0.4;
-                            object.material.opacity = 0.85;
+                            object.material.roughness = 0.3;
+                            object.material.opacity = 0.97;
                             object.material.aoMap = aoMap;
-                            object.material.aoMapIntensity = 0.5;
+                            object.material.aoMapIntensity = 0.7;
                             object.material.transparent =  true;
                             object.material.reflectivity = 1;
-                            object.material.envMap = scene.environment
+                            object.material.envMap = scene.environment;
                         }
                     });
 
                     scene.add(model);
+
+                                    // スクロール量に応じてカメラを動かす
+                const bodyHeight = document.body.clientHeight;
+                const mv = document.querySelector('.mainVisual');
+
+                let prev = {
+                    x: 0,
+                    y: 0,
+                    z: 0,
+                }
+                let current = {
+                    x: 0,
+                    y: 0,
+                    z: 0,
+                }
+                window.addEventListener('scroll', ()=> {
+
+                    current.y = window.scrollY / bodyHeight * 100;
+                    let coef = current.y - prev.y;
+                    function moveCamera() {
+                        console.log(model.position.z);
+                        model.position.x += coef * 2.7;
+                        model.position.z += coef * 5;
+                        console.log(camera.position);
+                        model.rotation.x += coef * 0.05;
+                        model.rotation.y += coef * 0.05;
+
+                        if(window.scrollY > mv.clientHeight) {
+                            el.classList.add('isFocused');
+                        }else {
+                            el.classList.remove('isFocused');   
+                        }
+                        
+                    }
+                    prev.y = window.scrollY / bodyHeight * 100;
+                    requestAnimationFrame(moveCamera);
+                })
                     
                     // アニメーションを再生するイベントを設定する
                     renderer.setAnimationLoop(() => {
@@ -72,10 +110,24 @@
                     });
                 })
 
-
-
                 // レンダリング
                 renderer.render(scene, camera);
+
+                window.addEventListener('resize', onResize);
+
+                    function onResize() {
+                    // サイズを取得
+                    const width = window.innerWidth;
+                    const height = window.innerHeight;
+
+                    // レンダラーのサイズを調整する
+                    renderer.setPixelRatio(window.devicePixelRatio);
+                    renderer.setSize(width, height);
+
+                    // カメラのアスペクト比を正す
+                    camera.aspect = width / height;
+                    camera.updateProjectionMatrix();
+                    }
 
                 tick();
 
@@ -88,9 +140,7 @@
 
                 }
             }
-
             init();
-
         }
         
     }
@@ -103,5 +153,13 @@
         left: 50%;
         pointer-events: none;
         z-index: -2;
+        transition: .6s linear;
+        opacity: 1;
+        filter: saturate(1.1);
+    }
+
+    #logoModel.isFocused {
+        filter: blur(40px);
+        opacity: 0.75;
     }
 </style>

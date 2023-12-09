@@ -1,5 +1,5 @@
 <template>
-    <div class="perlin"></div>
+    <!-- <div class="perlin"></div> -->
 </template>
 <style>
     .perlin {

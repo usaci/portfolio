@@ -18,7 +18,7 @@ export default {
         for(let i = 0;i<=80;i++) {
             ctx.beginPath();
             ctx.rect(Math.random()*5000, Math.random()*5000, Math.random()*42, Math.random()*42);
-            ctx.fillStyle = "#E6641E";
+            ctx.fillStyle = "#5359EA";
             ctx.fill();
 
         }
@@ -26,7 +26,7 @@ export default {
         for(let i = 0;i<=80;i++) {
             ctx.beginPath();
             ctx.rect(Math.random()*5000, Math.random()*5000, Math.random()*42, Math.random()*42);
-            ctx.fillStyle = "#2D29E6";
+            ctx.fillStyle = "#EC7055"
             ctx.fill();
         }
 
