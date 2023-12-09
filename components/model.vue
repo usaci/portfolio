@@ -44,19 +44,18 @@
                 const loader = new GLTFLoader();
                 loader.load("../_nuxt/assets/logo.glb", function(gltf) {
                     const model = gltf.scene;
-                    model.position.set(0, -0, 0);
+                    model.position.set(0, 0, 0);
                     model.scale.set(200, 200, 200);
 
                     model.traverse((object) => {
                         if (object.isMesh) {
                             // object.material.transparent = false;
-
                             const aoMap = new THREE.TextureLoader().load('../_nuxt/assets/aoMap.png')
                             aoMap.flipY = false;
                             object.material.roughness = 0.3;
                             object.material.opacity = 0.97;
                             object.material.aoMap = aoMap;
-                            object.material.aoMapIntensity = 0.7;
+                            object.material.aoMapIntensity = 0.8;
                             object.material.transparent =  true;
                             object.material.reflectivity = 1;
                             object.material.envMap = scene.environment;
@@ -79,22 +78,24 @@
                     y: 0,
                     z: 0,
                 }
+
                 window.addEventListener('scroll', ()=> {
 
                     current.y = window.scrollY / bodyHeight * 100;
                     let coef = current.y - prev.y;
                     function moveCamera() {
-                        console.log(model.position.z);
-                        model.position.x += coef * 2.7;
-                        model.position.z += coef * 5;
-                        console.log(camera.position);
+                        model.position.x += coef * (window.innerWidth / 360);
+                        model.position.z += coef * 3;
                         model.rotation.x += coef * 0.05;
-                        model.rotation.y += coef * 0.05;
-
+                        model.rotation.y += coef * 0.
+                        const noise = document.querySelector('.noise');
+        
                         if(window.scrollY > mv.clientHeight) {
                             el.classList.add('isFocused');
+                            noise.classList.add('isFocused');
                         }else {
                             el.classList.remove('isFocused');   
+                            noise.classList.remove('isFocused');   
                         }
                         
                     }

@@ -15,12 +15,12 @@ export default {
         const createblockNoise = function (){
 
         ctx.clearRect(0, 0, 4000, 5000);
+
         for(let i = 0;i<=80;i++) {
             ctx.beginPath();
             ctx.rect(Math.random()*5000, Math.random()*5000, Math.random()*42, Math.random()*42);
             ctx.fillStyle = "#5359EA";
             ctx.fill();
-
         }
 
         for(let i = 0;i<=80;i++) {
@@ -44,5 +44,9 @@ export default {
         top: 0;
         z-index: -2;
         pointer-events: none;
+    }
+
+    canvas#noise.isFocused {
+        filter: blur(40px);
     }
 </style>

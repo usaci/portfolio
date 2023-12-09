@@ -1,21 +1,23 @@
 <template>
     <template v-if="data">
         <main class="mainContents">
-        <header class="article__header">
-            <p class="article__cat">{{ data.category?.name }}</p>
-            <h1 class="article__title">{{ data.title }}</h1>
-            <figure>
-                <img
-                :src="data.eyecatch?.url"
-                :width="data.eyecatch?.width"
-                :height="data.eyecatch?.height"
-                alt=""
-                />
-            </figure>
-        </header>
-        <section class="article__main">
-            <div v-html="data.content"></div>
-        </section>
+            <article class="article">
+                <header class="article__header">
+                    <p class="article__cat">{{ data.category?.name }}</p>
+                    <h1 class="article__title">{{ data.title }}</h1>
+                    <figure>
+                        <img
+                        :src="data.eyecatch?.url"
+                        :width="data.eyecatch?.width"
+                        :height="data.eyecatch?.height"
+                        alt=""
+                        />
+                    </figure>
+                </header>
+                <section class="article__main">
+                    <div v-html="data.content"></div>
+                </section>
+            </article>
         <!-- <footer class="article__footer">
 
         </footer> -->
@@ -36,16 +38,21 @@ console.log(data)
 
 <style>
     .article__header {
-
-        padding: 12rem 4rem 4rem;
+        padding: 4rem;
     }
-    .article__header, .article__main {
-       max-width: 1024px;
+
+    .article__header .article__title {
+        font-weight: 500;
+    }
+
+    .article {
+        max-width: 1024px;
        margin: 0 auto;
-       backdrop-filter: blur(10px);
-       -webkit-backdrop-filter: blur(10px);
+       border-radius: 20px;
+       margin-top: 100px;
+       backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
     }
-
     .article__main, .article__footer {
         padding: 4rem;
     }
@@ -98,5 +105,15 @@ console.log(data)
         font-weight: 500;
     }
 
+    @media screen and (max-width: 768px) {
+        .article__header, .article__main {
+            padding: 20px;
+        }
+
+        .article__header .article__title {
+            font-size: 2.6rem;
+            margin-bottom: 30px;
+        }
+    }
 
 </style>

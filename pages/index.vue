@@ -1,4 +1,8 @@
 <template>
+    <div class="background">        
+        <BackNoise></BackNoise>
+        <Model></Model>
+    </div>
     <main class="mainContents" ref="mainContents">
         <section class="mainVisual" ref="mainVisual">
             <div class="inner">
@@ -114,16 +118,6 @@
 
     }
 
-    .mainContents {
-        transition: all .5s;
-    }
-
-    .mainContents.focused {
-        backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    background: #F1F0EF60;
-    }
-
     /* WORKS */
     .works {
         padding-bottom: 100px;
@@ -181,9 +175,9 @@
 
     .about .inner .about__texts .titles .mainTitle {
         writing-mode: initial;
-    font-size: 4.8rem;
-    line-height: 1.2;
-    margin-bottom: 4rem;
+        font-size: 4.8rem;
+        line-height: 1.2;
+        margin-bottom: 4rem;
     }
 
     .about .inner .titles .mainTitle {
@@ -206,28 +200,80 @@
 
 
     @media screen and (max-width: 768px) {
+
+        .subTitle {
+            font-size: 2.0rem
+        }
+
+        .mainVisual {
+            margin-bottom: 60px;
+        }
+
         .mainVisual .mainTitle {
             font-size: 15.2vw;
         }
 
-        .mainTitle {
-            margin-bottom: 30px;
-            font-size: 5.2rem;
+        .mainVisual .inner .titles {
+            left: 0;
+            padding: 20px;
         }
 
         .works {
             padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .works .inner {
+            padding: 20px;
+            gap: 20px;
+        }
+
+
+        .works .inner .titles .subTitle {
+            margin-left: 0;
+            font-size: 1.4rem;
+        }
+
+        .works .inner .titles .mainTitle {
+            margin-bottom: 30px;
+            font-size: 14vw;
         }
 
         .works .works__list {
             grid-template-columns: 1fr;
         }
 
-        .about .inner {
-            flex-direction: column;
+        .work .work__title {
+            font-size: 1.7rem;
         }
-        .about .inner div {
+
+        /* about */
+
+        .about .inner {
+            flex-direction: row-reverse;
+            padding: 20px;
+            gap: 30px;
+        }
+
+        .about .inner .mainTitle {
+            font-size: 3.0rem;
+            margin-bottom: 2.0rem;
+        }
+        
+        .about .inner .about__texts {
             width: 100%;
         }
+
+        .about .inner .titles .subTitle {
+            margin-left: 0;
+            font-size: 1.4rem;
+        }
+
+        .about .inner .titles .mainTitle {
+            margin-bottom: 30px;
+            font-size: 14vw;
+        }
+
+        
     }
 </style>
