@@ -1,6 +1,3 @@
-<template>
-    <canvas id="logoModel" class="logoModel"></canvas>
-</template>
 <script>
     import * as THREE from "three";
     import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -145,6 +142,9 @@
         
     }
 </script>
+<template>
+    <canvas id="logoModel" class="logoModel"></canvas>
+</template>
 <style>
     #logoModel {
         position: fixed;
