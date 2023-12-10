@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import BasicAuth from 'nuxt-basic-authentication-module'
 export default defineNuxtConfig({
   devtools: { enabled: true }, 
   ssr: false,
@@ -13,13 +14,18 @@ export default defineNuxtConfig({
     }
   }, 
 
-  modules: ["nuxt-microcms-module"],
+  modules: ["nuxt-microcms-module", [BasicAuth, { enabled: true }],],
   microCMS: {
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
   apiKey: process.env.MICROCMS_API_KEY,
   target: "all"
 
-},
+  },
+  runtimeConfig: {
+    basicAuth: {
+      pairs: {"user": "x&49Q4PXl[?W"}
+    },
+  },
   
 },
 
