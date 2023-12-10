@@ -29,11 +29,11 @@
                 // カメラの初期座標を設定（X座標:0, Y座標:0, Z座標:0）
                 camera.position.set(0, 0, 700);
                 const controls = new OrbitControls(camera, el);
+                const rgbeLoader = new RGBELoader();
 
-                new RGBELoader ().load('../_nuxt/assets/1k.hdr', function (texture) {
+                rgbeLoader.load('../_nuxt/assets/1k.hdr', function (texture) {
                     texture.mapping = THREE.EquirectangularReflectionMapping;
                     texture.opacity = 0;
-                    //scene.background = texture;
                     scene.environment = texture; // 解像度の低いテクスチャを使用
                 })
                 
