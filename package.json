@@ -19,6 +19,7 @@
     "@studio-freight/lenis": "^1.0.29",
     "destyle.css": "^4.0.0",
     "nuxt-microcms-module": "^3.0.2",
-    "three": "^0.159.0"
+    "three": "^0.159.0",
+    "typescript": "^5.3.3"
   }
 }
