@@ -2,6 +2,7 @@
     import * as THREE from "three";
     import { OrbitControls } from "three/addons/controls/OrbitControls.js";
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { RGBELoader } from "three/addons/loaders/RGBELoader";
     export default {
 
         mounted() {
@@ -29,12 +30,16 @@
                 camera.position.set(0, 0, 700);
                 const controls = new OrbitControls(camera, el);
 
+                new RGBELoader ().load('../_nuxt/public/1k.hdr', function (texture) {
+                    texture.mapping = THREE.EquirectangularReflectionMapping;
+                    texture.opacity = 0;
+                    //scene.background = texture;
+                    scene.environment = texture; // 解像度の低いテクスチャを使用
+                })
 
-                const light = new THREE.AmbientLight(0xFFFFFF, 2.2);
-                scene.add(light);
                 // GLSLローダー
                 const loader = new GLTFLoader();
-                loader.load("../_nuxt/assets/logo.glb", function(gltf) {
+                loader.load("../_nuxt/public/logo.glb", function(gltf) {
                     const model = gltf.scene;
                     model.position.set(0, 0, 0);
                     model.scale.set(200, 200, 200);
@@ -42,7 +47,7 @@
                     model.traverse((object) => {
                         if (object.isMesh) {
                             // object.material.transparent = false;
-                            const aoMap = new THREE.TextureLoader().load('../_nuxt/assets/aoMap.png')
+                            const aoMap = new THREE.TextureLoader().load('../_nuxt/public/aoMap.png')
                             aoMap.flipY = false;
                             object.material.roughness = 0.3;
                             object.material.opacity = 0.97;
