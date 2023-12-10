@@ -31,7 +31,7 @@
                 camera.position.set(0, 0, 1200);
                 const controls = new OrbitControls(camera, el);
 
-                new RGBELoader ().load('../_nuxt/public/1k.hdr', function (texture) {
+                new RGBELoader ().load('1k.hdr', function (texture) {
                     texture.mapping = THREE.EquirectangularReflectionMapping;
                     texture.opacity = 0;
                     //scene.background = texture;
@@ -40,7 +40,7 @@
                 
                 // GLSLローダー
                 const loader = new GLTFLoader();
-                loader.load("../_nuxt/public/logo.glb", function(gltf) {
+                loader.load('logo.glb', function(gltf) {
                     const model = gltf.scene;
                     model.position.set(0, 0, 0);
                     model.scale.set(200, 200, 200);
@@ -48,7 +48,7 @@
                     model.traverse((object) => {
                         if (object.isMesh) {
                             // object.material.transparent = false;
-                            const aoMap = new THREE.TextureLoader().load('../_nuxt/public/aoMap.png')
+                            const aoMap = new THREE.TextureLoader().load('aoMap.png')
                             aoMap.flipY = false;
                             object.material.roughness = 0.3;
                             object.material.opacity = 0.97;
@@ -99,6 +99,11 @@
                     // レンダリング
                     renderer.render(scene, camera);
 
+
+                }
+                (error) => {
+                    // オブジェクトの読み込みが失敗したタイミングで実行
+                    console.log(error)
                 }
             }
             init();
