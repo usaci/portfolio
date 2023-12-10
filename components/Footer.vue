@@ -81,4 +81,20 @@
     .links .inner .link__list .link a img {
         width: 2em;
     }
+
+    @media screen and (max-width: 768px) {
+        .links .inner {
+            padding: 2rem;
+        }
+
+        .links .inner .link__list {
+            gap: 2em;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .links .inner .link__list .link a {
+            font-size: 1.4rem;
+        }
+    }
 </style>

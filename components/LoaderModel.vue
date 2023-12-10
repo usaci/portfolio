@@ -73,7 +73,6 @@
 
                 // レンダリング
                 renderer.render(scene, camera);
-
                 window.addEventListener('resize', onResize);
 
                     function onResize() {
