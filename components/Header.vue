@@ -9,6 +9,9 @@
             <nav class="siteHeader__nav" :class="{isActive: menuStatus}" @click="removeClass">
                 <ul>
                     <li class="isHover--slot_box">
+                        <NuxtLink to="/"><span class="isHover--slot" data-title="Top">Top</span></NuxtLink>
+                    </li>
+                    <li class="isHover--slot_box">
                         <NuxtLink to="/works"><span class="isHover--slot" data-title="Works">Works</span></NuxtLink>
                     </li>
                     <li class="isHover--slot_box">
@@ -132,8 +135,12 @@
         transform: translateY(-100%);
     }
 
-    .siteHeader .siteHeader__nav li {
+    .siteHeader .siteHeader__nav ul li {
         height: fit-content;
+    }
+
+    .siteHeader .siteHeader__nav ul li a {
+        cursor: pointer;
     }
 
     @media screen and (max-width: 768px) {

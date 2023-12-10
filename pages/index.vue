@@ -86,8 +86,6 @@
                 <div class="work-container">
                     <ul class="works__list">
                         <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
-                        <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
-                        <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
                     </ul>
                     <Button value="制作事例はこちら"></Button>
                 </div>
@@ -104,40 +102,17 @@
 
                     <p>2000年12月9日生まれ。神奈川県秦野市在住。<br>
                         不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
-                        Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
+                        Webサイトのデザインや構築を中心として、映像制作やグラフィックデザインも手掛ける。</p>
     
-                    <h2 class="mainTitle animate peelOff">デザインと実装<br>どちらも興味があります。</h2>
-                        <p>2000年12月9日生まれ。神奈川県秦野市在住。<br>
-                        不動産会社でのWebデザイナーとして1年ほど勤務した後、神奈川県内のデザイン制作会社にデザイナーとして在籍。<br>
-                        Webサイトのデザイン・コーディング、WordPressの構築を中心に、映像制作やグラフィックデザインも手掛ける。</p>
+                    <h2 class="mainTitle animate peelOff">デザイン・実装<br>どちらも高いレベルで。</h2>
+                        <p>
+                            これまでWebサイトを中心にデザインからフロントエンドの構築に至るまで、幅広い工程に携わってまいりました。<br>
+                            新たな技術やデザインのトレンドを常に追い、高い水準でデザインから実装まで一貫して行うことができる人材として活躍していきたいと思います。
+                        </p>
 
-                        <Button value="プロフィールを詳しくみる"></Button>
+                        <NuxtLink to="/about"><Button value="プロフィールを詳しくみる"></Button></NuxtLink>
                 </div>
 
-            </div>
-        </section>
-        <section class="links">
-            <div class="inner">
-                <ul class="link__list">
-                    <li class="link">
-                        <a href="https://github.com/usaci" target="_blank">
-                            <img src="../assets/images/github.png" alt="github">
-                            <p>Github</p>
-                        </a>
-                    </li>
-                    <li class="link">
-                        <a href="https://designroom.work" target="_blank">
-                            <img src="../assets/images/designroom.png" alt="デザインのへや">
-                            <p>デザインのへや（個人ブログ）</p>
-                        </a>
-                    </li>
-                    <li class="link">
-                        <a href="https://www.wantedly.com/id/Fujikawa_tk" target="_blank">
-                            <img src="../assets/images/wantedly.png" alt="wantedly">
-                            <p>Wantedly</p>
-                        </a>
-                    </li>
-                </ul>
             </div>
         </section>
     </main>
@@ -311,7 +286,7 @@
         writing-mode: initial;
         font-size: 4.8rem;
         line-height: 1.2;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
 
     .about .inner .titles .mainTitle {
@@ -331,36 +306,6 @@
         margin-bottom: 6rem;
     }
 
-    .links .inner {
-        padding: 40px;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    .links .inner .link__list {
-        display: flex;
-        gap: 4em;
-        margin: 0 auto;
-        width: fit-content;
-    }
-
-    .links .inner .link__list .link a {
-        display: flex;
-        align-items: center;
-        font-size: 1.6rem;
-        font-weight: 500;
-        gap: 10px;
-        transition: .4s;
-    }
-
-    .links .inner .link__list .link a:hover {
-        opacity: .5;
-    }
-
-    .links .inner .link__list .link a img {
-        width: 2em;
-    }
-
     @media screen and (max-width: 768px) {
 
         .subTitle {
@@ -373,6 +318,7 @@
 
         .mainVisual .mainTitle {
             font-size: 13.2vw;
+            margin-bottom: 3rem;
         }
 
         .mainVisual .inner .titles {

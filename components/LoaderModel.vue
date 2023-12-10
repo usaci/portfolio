@@ -13,10 +13,8 @@
             function init() {
                 const width = window.innerWidth;
                 const height = window.innerHeight;
-
                 
                 // レンダラーを作成
-
                 const renderer = new THREE.WebGLRenderer({
                     canvas: el,
                     alpha: true

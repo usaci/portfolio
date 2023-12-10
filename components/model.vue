@@ -88,14 +88,13 @@
                         model.position.z += coef * 3;
                         model.rotation.x += coef * 0.05;
                         model.rotation.y += coef * 0.
-                        const noise = document.querySelector('.noise');
+
         
                         if(window.scrollY > mv.clientHeight) {
                             el.classList.add('isFocused');
-                            noise.classList.add('isFocused');
+    
                         }else {
                             el.classList.remove('isFocused');   
-                            noise.classList.remove('isFocused');   
                         }
                         
                     }

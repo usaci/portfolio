@@ -33,7 +33,19 @@ export default {
         }
 
         createblockNoise();
-        setInterval(createblockNoise, 300)
+        setInterval(createblockNoise, 300);
+
+        const mv = document.querySelector('.mainVisual');
+
+        window.addEventListener('scroll', () => {
+                
+            if(window.scrollY > mv.clientHeight) {
+                    canvas.classList.add('isFocused');
+
+                }else {
+                    canvas.classList.remove('isFocused');   
+            }
+        })
     }
 }
 
