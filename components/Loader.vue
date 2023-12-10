@@ -1,8 +1,7 @@
 <template>
-    <div class="loader" :class="{isHidden: status}">
-        <p class="loading">Now Loading...</p>
-        <p class="loader__counter">{{ this.count }}%</p>
-        <div class="loader__bar" :style="{transform: `translateX(${150 - this.count}%)`}"></div>
+    <div class="loader" :class="{isHidden: status}" :style="{display: displayStatus}">
+        <LoaderModel></LoaderModel>
+        <p class="loader__text up-container">Now Loading...</p>
     </div>
 </template>
 <script>
@@ -11,6 +10,7 @@
             return {
                 count: 0,
                 status: false,
+                displayStatus: 'block'
                 
             }
         },
@@ -27,7 +27,11 @@
             setInterval(this.countUp, 3);
             setTimeout(() => {
                 this.status = !this.status;
-            }, 1400)
+            }, 2000)
+
+            setTimeout(() => {
+                this.displayStatus = 'none';
+            }, 2500)
         }
     }
 </script>
@@ -43,29 +47,40 @@
         line-height: 0.9;
         font-family: 'degular-display', sans-serif;
         color: #28282A;
-        background: linear-gradient(180deg, #F1F0EF 0%, #E7E3E0 100%);
+        background: #F1F0EF;
         z-index: 4;
+        backdrop-filter: blur(80px);
         padding: 20px;
         transition: opacity 0.6s;
+    }
+
+    .loader__text {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        bottom: 25%;
+        left: 50%;
+        width: 100%;
+        text-align: center;
+        font-size: 3.6rem;
     }
 
     .loader.isHidden {
         opacity: 0;
         pointer-events: none;
     }
-    .loader .loader__counter {
-        font-size: 40vw;
-        text-align: right;
+
+    .up-container:first-child {
+        overflow: hidden;
     }
 
-    .loader .loader__bar {
-        position: absolute;
-        width: 100vw;
-        bottom: 0%;
-        left: 50%;
-        transform: translate(-50%, 0%);
-        height: 10px;
-        background: var(--main-purple);
-        background-image: linear-gradient( 90deg, #F5512D 0 20%, #4047E3 20% );
+    .animate.up {
+        display: inline-block;
+        transform: translateY(105%);
+        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
+    .animate.up.isAnimated {
+        transform: translateY(-7%);
+    }
+
 </style>

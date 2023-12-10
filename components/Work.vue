@@ -6,7 +6,7 @@
                     <img :src="src" alt="" class="">
                 </figure>
                 <h3 class="work__title isHover--slot_box">
-                    <span class="isHover--slot" :data-title="title">
+                    <span class="isHover--slot animate peel-off" :data-title="title">
                         {{ title }}
                     </span>
                 </h3>

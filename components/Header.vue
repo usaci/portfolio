@@ -9,10 +9,10 @@
             <nav class="siteHeader__nav" :class="{isActive: menuStatus}" @click="removeClass">
                 <ul>
                     <li class="isHover--slot_box">
-                        <a href="/works" class="isHover--slot" data-title="About">About</a>
+                        <NuxtLink to="/works"><span class="isHover--slot" data-title="Works">Works</span></NuxtLink>
                     </li>
                     <li class="isHover--slot_box">
-                        <a href="/works" class="isHover--slot" data-title="Works">Works</a>
+                        <NuxtLink to="/about"><span class="isHover--slot" data-title="About">About</span></NuxtLink>
                     </li>
                 </ul>
             </nav>
