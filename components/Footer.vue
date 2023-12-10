@@ -11,7 +11,7 @@
                     </li>
                     <li class="link">
                         <a href="https://designroom.work" target="_blank">
-                            <img src="../assets/images/designroom.png" alt="デザインのへや">
+                            <img src="../assets/images/designRoom.png" alt="デザインのへや">
                             <p>デザインのへや（個人ブログ）</p>
                         </a>
                     </li>
