@@ -87,7 +87,7 @@
                     <ul class="works__list">
                         <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
                     </ul>
-                    <Button value="制作事例はこちら"></Button>
+                    <Button value="詳しく見る"></Button>
                 </div>
             </div>
         </section>
@@ -110,7 +110,7 @@
                             新たな技術やデザインのトレンドを常に追い、高い水準でデザインから実装まで一貫して行うことができる人材として活躍していきたいと思います。
                         </p>
 
-                        <NuxtLink to="/about"><Button value="プロフィールを詳しくみる"></Button></NuxtLink>
+                        <NuxtLink to="/about"><Button value="詳しく見る"></Button></NuxtLink>
                 </div>
 
             </div>
