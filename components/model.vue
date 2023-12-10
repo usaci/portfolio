@@ -21,9 +21,10 @@
                 renderer.setSize(width, height);
                 renderer.setPixelRatio(window.devicePixelRatio);
 
+                console.log(renderer);
                 // シーンを作成
                 const scene = new THREE.Scene();
-
+                console.log(scene);
                 // カメラを作成
                 const camera = new THREE.PerspectiveCamera(45, width / height);
                 // カメラの初期座標を設定（X座標:0, Y座標:0, Z座標:0）
@@ -41,6 +42,7 @@
                 const loader = new GLTFLoader();
                 loader.load("../_nuxt/public/logo.glb", function(gltf) {
                     const model = gltf.scene;
+                    console.log(model);
                     model.position.set(0, 0, 0);
                     model.scale.set(200, 200, 200);
 
@@ -57,7 +59,7 @@
                             object.material.reflectivity = 1;
                             object.material.envMap = scene.environment;
                         }
-                    });
+                    })
 
                     scene.add(model);
 
