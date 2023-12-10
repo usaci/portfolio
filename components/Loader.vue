@@ -30,9 +30,9 @@
                 this.status = !this.status;
             }, 2000)
 
-            // setTimeout(() => {
-            //     this.displayStatus = 'none';
-            // }, 2500)
+            setTimeout(() => {
+                this.displayStatus = 'none';
+            }, 2800)
         }
     }
 </script>
