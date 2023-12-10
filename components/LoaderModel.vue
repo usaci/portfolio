@@ -13,7 +13,7 @@
             function init() {
                 const width = window.innerWidth;
                 const height = window.innerHeight;
-                
+
                 // レンダラーを作成
                 const renderer = new THREE.WebGLRenderer({
                     canvas: el,
@@ -31,12 +31,8 @@
                 camera.position.set(0, 0, 1200);
                 const controls = new OrbitControls(camera, el);
 
-                new RGBELoader ().load('../_nuxt/assets/1k.hdr', function (texture) {
-                    texture.mapping = THREE.EquirectangularReflectionMapping;
-                    texture.opacity = 0;
-                    //scene.background = texture;
-                    scene.environment = texture; // 解像度の低いテクスチャを使用
-                })
+                const light = new THREE.AmbientLight(0xFFFFFF, 2.2);
+                scene.add(light);
                 
                 // GLSLローダー
                 const loader = new GLTFLoader();

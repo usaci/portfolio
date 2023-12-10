@@ -29,14 +29,10 @@
                 // カメラの初期座標を設定（X座標:0, Y座標:0, Z座標:0）
                 camera.position.set(0, 0, 700);
                 const controls = new OrbitControls(camera, el);
-                const rgbeLoader = new RGBELoader();
 
-                rgbeLoader.load('../_nuxt/assets/1k.hdr', function (texture) {
-                    texture.mapping = THREE.EquirectangularReflectionMapping;
-                    texture.opacity = 0;
-                    scene.environment = texture; // 解像度の低いテクスチャを使用
-                })
-                
+
+                const light = new THREE.AmbientLight(0xFFFFFF, 2.2);
+                scene.add(light);
                 // GLSLローダー
                 const loader = new GLTFLoader();
                 loader.load("../_nuxt/assets/logo.glb", function(gltf) {
