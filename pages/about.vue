@@ -142,6 +142,7 @@
     .article .about .about__skill dt {
         font-size: 2.0rem;
         margin-bottom: 1rem;
+        font-weight: 500;
     }
 
     .article .about .about__skill dt:before {
@@ -192,6 +193,7 @@
 
     .article .about .about__career dt {
         margin-bottom: 1rem;
+        font-weight: 500;
     }
 
     .article .about .about__career dd {
@@ -207,6 +209,14 @@
         .article__header .article__title {
             font-size: 2.6rem;
             margin-bottom: 30px;
+        }
+
+        .article .about .box {
+            flex-direction: column;
+        }
+
+        .article .about .myImg {
+            width: 100%;
         }
     }
 
