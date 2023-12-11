@@ -87,7 +87,7 @@
                     <ul class="works__list">
                         <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
                     </ul>
-                    <Button value="詳しく見る"></Button>
+                    <Button value="もっと見る"></Button>
                 </div>
             </div>
         </section>
