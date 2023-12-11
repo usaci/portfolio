@@ -15,6 +15,10 @@
                     </figure>
                 </header>
                 <section class="article__main">
+                    <h2>使用言語・ツール</h2>
+                    <div>
+                        <span v-for="tag in data?.tags">{{ tag?.tag }}, </span>
+                    </div>
                     <div v-html="data.content"></div>
                 </section>
             </article>
@@ -33,7 +37,6 @@ const { data } = await useMicroCMSGetListDetail<Blog>({
   endpoint: "blogs",
   contentId: Array.isArray(params.id) ? params.id[0] : params.id,
 });
-console.log(data)
 </script>
 
 <style>
@@ -87,12 +90,19 @@ console.log(data)
 
     .article__main h2 {
         font-size: 2.4rem;
-        background-image: linear-gradient( 90deg, #F5512D 0 20%, #4047E3 20% );
+        position: relative;
+        font-weight: 500!important;
+    }
+
+    .article__main h2:before {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        background: url('../assets/deco.svg');
         background-repeat: no-repeat;
-        background-size: 100% 5%;
-        background-position: bottom;
-        padding: 0.3em 0;
-        font-weight: 500;
+        background-size: contain;
+        margin-right: 10px;
     }
 
     .article__main h3 {
