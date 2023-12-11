@@ -10,7 +10,7 @@
                         {{ title }}
                     </span>
                 </h3>
-                <p>{{ category }} | 種別</p>
+                <p class="work__cat">{{ category }}</p>
             </article>
         </NuxtLink>
     </li>
@@ -70,6 +70,16 @@
 
     .work:hover .isHover--slot{
         transform: translateY(-100%);
+    }
+
+    .work .work__cat {
+        border: solid 1px #4047E3;
+        color: #4047E3;
+        width: fit-content;
+        padding: 0.2em 0.4em;
+        margin-top: 1rem;
+        font-size: 1.3rem;
+
     }
 
 

@@ -18,7 +18,9 @@
     import { type Blog } from "~~/types/blog";
     const { data, error } = await useMicroCMSGetList<Blog>({
     endpoint: "blogs",
+    queries: { limit: 100 }
     });
+    console.log(data);
 </script>
 
 <style>

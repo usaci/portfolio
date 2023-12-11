@@ -48,7 +48,7 @@ html {
 
  @media screen and (max-width: 768px) {
   body {
-    line-height: 1.4;
+    line-height: 1.6;
     font-size: 1.4rem;
   }
  }
