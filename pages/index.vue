@@ -23,7 +23,7 @@
                 if(e.classList.contains('init')) {
                     e.classList.add('isAnimated');
                 }
-            }, 1500)
+            }, 3200)
 
             window.addEventListener('scroll', () => {
                 getAnimated(e);
@@ -87,7 +87,7 @@
                     <ul class="works__list">
                         <Work v-for="blog in data?.contents" :title="blog.title" :category="blog.category?.name" :src="blog.eyecatch?.url" :url="blog.id"/>
                     </ul>
-                    <Button value="もっと見る"></Button>
+                    <NuxtLink to="/works"><Button value="もっと見る"></Button></NuxtLink>
                 </div>
             </div>
         </section>
