@@ -14,18 +14,23 @@ export default defineNuxtConfig({
     }
   }, 
 
-  modules: ["nuxt-microcms-module", [BasicAuth, { enabled: true }],],
+  modules: ["nuxt-microcms-module", "@kgierke/nuxt-basic-auth"],
   microCMS: {
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
   apiKey: process.env.MICROCMS_API_KEY,
   target: "all"
 
   },
-  runtimeConfig: {
-
-    basicAuth: {
-      pairs: {user: process.env.BASIC_PWD}
-    },
+  basicAuth: {
+    enabled: true,
+    users: [
+      {
+        username: process.env.BASIC_USER,
+        password: process.env.BASIC_PWD,
+      },
+    ],
+    // Optional: Whitelist routes
+    // allowedRoutes: ["/api/.*"],
   },
   
 },
