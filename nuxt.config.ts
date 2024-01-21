@@ -22,8 +22,9 @@ export default defineNuxtConfig({
 
   },
   runtimeConfig: {
+
     basicAuth: {
-      pairs: {"user": "x&49Q4PXl[?W"}
+      pairs: {user: process.env.BASIC_PWD}
     },
   },
   
